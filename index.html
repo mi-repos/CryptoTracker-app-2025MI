@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Tracker - Live Prices</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <i class="fas fa-coins"></i>
+                    Crypto Tracker
+                </h1>
+                <div class="last-updated" id="lastUpdated">
+                    Last updated: <span id="updateTime">-</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search cryptocurrencies..." class="search-input">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="filter-container">
+                    <select id="currencySelect" class="currency-select">
+                        <option value="usd">USD</option>
+                        <option value="eur">EUR</option>
+                        <option value="gbp">GBP</option>
+                        <option value="jpy">JPY</option>
+                        <option value="sdn">SDN</option>
+                    </select>
+                    <button id="refreshBtn" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+            </section>
+
+            <section class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalMarketCap">-</div>
+                    <div class="stat-label">Total Market Cap</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalVolume">-</div>
+                    <div class="stat-label">24h Volume</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="btcDominance">-</div>
+                    <div class="stat-label">BTC Dominance</div>
+                </div>
+            </section>
+
+            <section class="crypto-table-section">
+                <div class="table-header">
+                    <h2>Top Cryptocurrencies</h2>
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Loading...
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="crypto-table" id="cryptoTable">
+                        <thead>
+                            <tr>
+                                <th data-sort="rank">#</th>
+                                <th data-sort="name">Name</th>
+                                <th data-sort="price">Price</th>
+                                <th data-sort="change24h">24h %</th>
+                                <th data-sort="marketCap">Market Cap</th>
+                                <th data-sort="volume">Volume (24h)</th>
+                                <th>Last 7 Days</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cryptoTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="error-message" id="errorMessage" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="errorText">Failed to load data. Please try again.</span>
+                    <button id="retryBtn" class="retry-btn">Retry</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>CoinGecko API</p>
+            <p>&copy; 2025 - By Mohammed Issa. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
